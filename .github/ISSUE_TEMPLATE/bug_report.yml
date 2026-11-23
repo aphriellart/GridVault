@@ -1,0 +1,41 @@
+name: Bug report
+description: Something didn't download or the collector stopped early
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report! **Never paste cookies, session files or `sessionid` values here.**
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options:
+        - Browser collector (chrome_collect.js)
+        - download_manifest.py
+        - instaloader mode (ig_download.py)
+        - Claude Code skill
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you ran, what you expected, and what you got.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: "[GridVault] lines from the Console, the result of `__ig.status()`, or the script output."
+      render: text
+  - type: input
+    id: env
+    attributes:
+      label: Browser and OS
+      placeholder: Chrome 131, Windows 11
+  - type: input
+    id: size
+    attributes:
+      label: Approximate number of posts on the profile
