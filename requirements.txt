@@ -1,0 +1,3 @@
+# Only needed for instaloader mode (ig_download.py, ig_session_from_cookie.py).
+# Chrome mode (chrome_collect.js + download_manifest.py) uses the Python standard library only.
+instaloader>=4.16

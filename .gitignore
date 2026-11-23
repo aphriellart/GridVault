@@ -1,0 +1,22 @@
+# Downloaded Instagram content - belongs to its creators, never commit it
+downloads/
+*_manifest*.json
+manifest.json
+latest-stamps.ini
+
+# instaloader session files grant access to an Instagram account
+session-*
+
+# Python
+__pycache__/
+*.py[cod]
+*.part
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
