@@ -13,6 +13,7 @@ Only Instagram CDN hosts (*.cdninstagram.com, *.fbcdn.net) are downloaded.
 import argparse
 import datetime as dt
 import json
+import os
 import re
 import shutil
 import sys
@@ -89,7 +90,14 @@ def main() -> None:
     ap.add_argument("--workers", type=int, default=4)
     args = ap.parse_args()
 
-    mf = Path(args.manifest).expanduser()
+    mf = Path(os.path.expandvars(args.manifest)).expanduser()
+    if "<" in args.manifest or not mf.is_file():
+        sys.exit(
+            f"Manifest not found: {args.manifest}\n"
+            "Use the real file path, e.g. C:\\Users\\<you>\\Downloads\\ig_natgeo_manifest.json "
+            "(replace <username> with the account name). In cmd.exe use %USERPROFILE%, "
+            "in PowerShell $env:USERPROFILE."
+        )
     data = json.loads(mf.read_text(encoding="utf-8"))
     if data.get("tool") not in KNOWN_TOOLS:
         sys.exit("Not a GridVault manifest (from chrome_collect.js)")
